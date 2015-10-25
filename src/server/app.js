@@ -31,6 +31,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
+app.use('/api', require('./routes/itemRoutes'));
 app.use('/api', require('./routes'));
 
 console.log('About to crank up node');
