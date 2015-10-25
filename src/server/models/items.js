@@ -1,13 +1,15 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+(function() {
 
-var itemSchema = new Schema ({
-	name: String,
-	type: String,
-});
+    var mongoose = require('mongoose');
+    var Schema = mongoose.Schema;
 
-var Item = mongoose.model("items", itemSchema);
+    var itemSchema = new Schema ({
+        name: String,
+        type: String
+    });
 
-module.exports = {
-	Item: Item
-};
+    var Item = mongoose.model('items', itemSchema);
+
+    module.exports = Item;
+
+})();
