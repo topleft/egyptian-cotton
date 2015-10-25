@@ -8,8 +8,23 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var port = process.env.PORT || 8001;
 var four0four = require('./utils/404')();
+var mongoose = require('mongoose');
+var dbconfig = require('./_dbconfig');
 
 var environment = process.env.NODE_ENV;
+
+// *** config file *** //
+var dbconfig = require('./_dbconfig');
+
+// *** database config *** /    /
+mongoose.connect(dbconfig.mongoURI[environment],
+    function(err, res) {
+        if (err) {
+            console.log('Failed to connect to DB: ' + err);
+        } else {
+            console.log('Success. Connected to: ' + dbconfig.mongoURI[environment]);
+        }
+    });
 
 app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.urlencoded({extended: true}));
