@@ -14,7 +14,7 @@
 
     var config = {
         appErrorPrefix: '[egyptian Error] ',
-        appTitle: 'egyptian'
+        appTitle: 'egyptian cotton'
     };
 
     core.value('config', config);
