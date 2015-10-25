@@ -1,0 +1,9 @@
+var dbconfig = {};
+
+dbconfig.mongoURI = {
+	test: 'mongodb://localhost/egyptian-crud',
+	dev: 'mongodb://localhost/egyptian-testing',
+	production: process.env.MONGOLAB_URI 
+};
+
+module.exports = dbconfig;
