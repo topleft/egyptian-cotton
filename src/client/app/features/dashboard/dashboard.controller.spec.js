@@ -4,7 +4,7 @@ describe('DashboardController', function() {
     var people = mockData.getMockPeople();
 
     beforeEach(function() {
-        bard.appModule('app.dashboard');
+        bard.appModule('app.features.dashboard');
         bard.inject('$controller', '$log', '$q', '$rootScope', 'dataservice');
     });
 

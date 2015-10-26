@@ -137,4 +137,100 @@ module.exports = {
 	handleDelete: handleDelete
 };
 ```
+in core/dataservice.js add into the IIFE:
+
+```
+		function getItems() {
+            return $http.get('/api/items')
+                .then(success)
+                .catch(fail);
+            function success(response) {
+                return response.data;
+            }
+            function fail(e) {
+                return exception.catcher('XHR Failed for getItems')(e);
+            }
+        }
+
+        function getOneItem(id) {
+            return $http.get('/api/items/' + id)
+                .then(success)
+                .catch(fail);
+            function success(response) {
+                return response.data;
+            }
+            function fail(e) {
+                return exception.catcher('XHR Failed for getOneItem')(e);
+            }
+        }
+
+        function createItem(name, type) {
+            return $http.post('/api/items', {
+                name: name,
+                type: type
+            })
+                .then(success)
+                .catch(fail);
+            function success(response) {
+                return response.data;
+            }
+            function fail(e) {
+                return exception.catcher('XHR Failed for createItem')(e);
+            }
+        }
+
+        function updateItem(id, name, type) {
+            return $http.put('/api/items/' + id, {
+                name: name,
+                type: type
+            })
+                .then(success)
+                .catch(fail);
+            function success(response) {
+                return response.data;
+            }
+            function fail(e) {
+                return exception.catcher('XHR Failed for updateItem')(e);
+            }
+        }
+
+        function deleteItem(id) {
+            return $http.delete('/api/items/' + id)
+                .then(success)
+                .catch(fail);
+            function success(response) {
+                return response.data;
+            }
+            function fail(e) {
+                return exception.catcher('XHR Failed for deleteItem')(e);
+            }
+        }
+```
+
+ammend the returned object (services):
+
+```
+            getItems: getItems,
+            getOneItem: getOneItem,
+            creatItem: createItem,
+            updateItem: updateItem,
+            deleteItem: deleteItem
+```
+
+create two folder inside the add folder: features and components
+
+features will more or less refer to whole page views 
+components will hold smaller pieces of functionality used within the features
+
+moved admin and dashboiard into features, renamed file paths and module names
+created features.module
+injected admin and dashboard modules
+injected features module in app module and took put dashboard and admin
+
+we will make our crud a feature
+
+created items folder in features, cut and pasted admin files and renamed them with items.*
+
+
+
 
