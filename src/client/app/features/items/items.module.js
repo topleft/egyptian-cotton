@@ -3,7 +3,8 @@
 
     angular.module('app.features.items', [
         'app.core',
-        'app.widgets'
+        'app.widgets',
+        'app.components'
       ]);
 
 })();
