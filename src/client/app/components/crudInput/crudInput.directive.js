@@ -18,8 +18,21 @@
     crudInputController.$inject = [ 'dataservice'];
 
     function crudInputController(dataservice) {
+        var vm = this;
 
-        console.log('in crudInput controller');
+        function createItem (name, type) {
+            dataservice.createItem(name, type)
+                .success(function(data){
+                    // need front end dataservice 
+                    //dataservice.addItemToList(data);
+                })
+                .fail(function(err){
+                    console.log(err);
+                })
+
+        }
+
+
 
     }
 
