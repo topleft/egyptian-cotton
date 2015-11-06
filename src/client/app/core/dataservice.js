@@ -13,7 +13,7 @@
             getMessageCount: getMessageCount,
             getItems: getItems,
             getOneItem: getOneItem,
-            creatItem: createItem,
+            createItem: createItem,
             updateItem: updateItem,
             deleteItem: deleteItem
         };
@@ -38,14 +38,7 @@
 
         function getItems() {
             return $http.get('/api/items')
-                .then(success)
-                .catch(fail);
-            function success(response) {
-                return response.data;
-            }
-            function fail(e) {
-                return exception.catcher('XHR Failed for getItems')(e);
-            }
+
         }
 
         function getOneItem(id) {

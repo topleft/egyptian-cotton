@@ -10,16 +10,19 @@
     function frontEndDataService(exception, logger) {
         var service = {
             items: [],
+            populateAllItems: populateAllItems,
             addItem: addItem,
             getOneItem: getOneItem,
             getItems: getItems,
             removeItem: removeItem,
-            updateItem: updateItem
-
-            
+            updateItem: updateItem     
         };
 
         return service;
+
+        function populateAllItems(itemArr) {
+            service.items = itemArr;
+        }
 
         function addItem(item) {
             service.items.push(item);

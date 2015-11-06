@@ -1,6 +1,5 @@
 (function() {
     'use strict';
-
     angular.module('app.components.crudInput')
         .directive('crudInput', crudInputDirective);
 
@@ -15,23 +14,19 @@
         };
     }
 
-    crudInputController.$inject = [ 'dataservice'];
+    crudInputController.$inject = [ 'dataservice', 'frontEndDataService'];
 
-    function crudInputController(dataservice) {
+    function crudInputController(dataservice, frontEndDataService) {
         var vm = this;
+        console.log(vm);
 
-        function createItem (name, type) {
-            dataservice.createItem(name, type)
-                .success(function(data){
-                    // need front end dataservice 
-                    //dataservice.addItemToList(data);
-                })
-                .fail(function(err){
-                    console.log(err);
-                })
+        vm.createItem = createItem;
 
+        function createItem () {
+            console.log('Test: ', vm.name, vm.type);
+            var newItem = dataservice.createItem(vm.name, vm.type);
+            frontEndDataService.addItem(newItem);   
         }
-
 
 
     }
