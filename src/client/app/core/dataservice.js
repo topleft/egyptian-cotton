@@ -42,56 +42,24 @@
 
         function getOneItem(id) {
             return $http.get('/api/items/' + id)
-                .then(success)
-                .catch(fail);
-            function success(response) {
-                return response.data;
-            }
-            function fail(e) {
-                return exception.catcher('XHR Failed for getOneItem')(e);
-            }
         }
 
         function createItem(name, type) {
             return $http.post('/api/items', {
                 name: name,
                 type: type
-            })
-                .then(success)
-                .catch(fail);
-            function success(response) {
-                return response.data;
-            }
-            function fail(e) {
-                return exception.catcher('XHR Failed for createItem')(e);
-            }
+            });
         }
 
         function updateItem(id, name, type) {
             return $http.put('/api/items/' + id, {
                 name: name,
                 type: type
-            })
-                .then(success)
-                .catch(fail);
-            function success(response) {
-                return response.data;
-            }
-            function fail(e) {
-                return exception.catcher('XHR Failed for updateItem')(e);
-            }
+            });
         }
 
         function deleteItem(id) {
-            return $http.delete('/api/items/' + id)
-                .then(success)
-                .catch(fail);
-            function success(response) {
-                return response.data;
-            }
-            function fail(e) {
-                return exception.catcher('XHR Failed for deleteItem')(e);
-            }
+            return $http.delete('/api/items/' + id);
         }
 
     }

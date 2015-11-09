@@ -18,22 +18,45 @@
 
     function crudOutputController(dataservice, frontEndDataService) {
         var vm = this;
-        console.log('Output');
-        
-
         initOutput();
+        vm.update = false;
+        vm.del = false;
+
+        vm.toggleUpdate = toggleUpdate;
+        vm.updateItem = updateItem;
+        vm.confirmDelete = confirmDelete;
+        vm.deleteItem = deleteItem;
+
+
 
         function initOutput() {
             dataservice.getItems()
             .success(function(response) {
                 vm.items = response;
-                console.log(vm.items);
+                frontEndDataService.populateAllItems(vm.items);
             });
         }
 
+        function toggleUpdate(id){
+            vm.update = id;
+        }
+        function updateItem(id, name, type){
+            dataservice.updateItem(id, name, type)
+            .then(frontEndDataService.updateItem);
+
+            vm.update = false;
+        }
+        function confirmDelete(id){
+            vm.del = id;
+        };
+        function deleteItem(id){
+            dataservice.deleteItem(id)
+                .then(function(data){
+                    frontEndDataService.deleteItem(id);
+                });
+        };
 
 
-        
 
     }
 
