@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.admin')
+        .module('app.features.admin')
         .controller('AdminController', AdminController);
 
     AdminController.$inject = ['logger'];

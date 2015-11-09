@@ -1,10 +1,10 @@
 /* jshint -W117, -W030 */
 describe('admin routes', function () {
     describe('state', function () {
-        var view = 'app/admin/admin.html';
+        var view = 'app/features/admin/admin.html';
 
         beforeEach(function() {
-            module('app.admin', bard.fakeToastr);
+            module('app.features.admin', bard.fakeToastr);
             bard.inject('$httpBackend', '$location', '$rootScope', '$state', '$templateCache');
         });
 
