@@ -37,8 +37,7 @@
         }
 
         function getItems() {
-            return $http.get('/api/items')
-
+            return $http.get('/api/items');
         }
 
         function getOneItem(id) {
