@@ -23,9 +23,11 @@
         vm.createItem = createItem;
 
         function createItem () {
-            console.log('Test: ', vm.name, vm.type);
-            var newItem = dataservice.createItem(vm.name, vm.type);
-            frontEndDataService.addItem(newItem);   
+            dataservice.createItem(vm.name, vm.type)
+                .then(function(response){
+                    var newItem = response.data[0];
+                    frontEndDataService.addItem(newItem);   
+                });
         }
 
 

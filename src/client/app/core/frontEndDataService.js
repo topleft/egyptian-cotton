@@ -14,7 +14,7 @@
             addItem: addItem,
             getOneItem: getOneItem,
             getItems: getItems,
-            removeItem: removeItem,
+            deleteItem: deleteItem,
             updateItem: updateItem     
         };
 
@@ -28,7 +28,7 @@
             service.items.push(item);
         }
 
-        function removeItem(id) {
+        function deleteItem(id) {
             return service.items.forEach(function(item, i, arr) {
                 if (item._id === id) {
                     arr.splice(i, 1);
@@ -49,9 +49,9 @@
         }
 
         // takes an object of keys with values to update
-        function updateItem(id, obj) {
+        function updateItem(obj) {
             return service.items.forEach(function(item) {
-                if (item._id === id) {
+                if (item._id === obj.id) {
                     for (key in obj) {
                         item.key = obj.key;
                     }

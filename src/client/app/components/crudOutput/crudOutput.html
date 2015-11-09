@@ -1,4 +1,3 @@
- 
 <div class='table output'>
 <div class='col-md-10 col-md-offset-1'>
     <table class="table">
@@ -9,31 +8,31 @@
         <th>Delete</th>
       </tr>
       <tr ng-repeat="item in vm.items">
-        <td ng-show='update !== item._id'>{{ item.name }}</td>
-        <td ng-show='update !== item._id'>{{ item.type }}</td>
+        <td ng-show='vm.update !== item._id'>{{ item.name }}</td>
+        <td ng-show='vm.update !== item._id'>{{ item.type }}</td>
         
-        <td ng-show='update === item._id'>
+        <td ng-show='vm.update === item._id'>
           <input type="text" class="form-control" ng-model='item.name' id="name" placeholder="{{item.name}}">
         </td>
         
-        <td ng-show='update === item._id'>
+        <td ng-show='vm.update === item._id'>
           <input type="text" class="form-control" ng-model='item.type' id="type" placeholder="{{item.type}}">
         </td>
                 
-        <td ng-show='update !== item._id'><button  class='btn btn-warning glyphicon glyphicon-pencil' ng-click='toggleUpdate(item._id)'></button></td>
+        <td ng-show='vm.update !== item._id'><button  class='btn btn-warning glyphicon glyphicon-pencil' ng-click='vm.toggleUpdate(item._id)'></button></td>
         
-        <td ng-show='update === item._id'>
-          <button type='submit' class='confirm btn btn-info btn-sml glyphicon glyphicon-ok' ng-click='updateItem(item._id, item.name, item.type)'></button>
-          <button type='button' class='confirm btn btn-warning btn-sml glyphicon glyphicon-ban-circle' ng-click='toggleUpdate(false)'></button>
+        <td ng-show='vm.update === item._id'>
+          <button type='submit' class='confirm btn btn-info btn-sml glyphicon glyphicon-ok' ng-click='vm.updateItem(item._id, item.name, item.type)'></button>
+          <button type='button' class='confirm btn btn-warning btn-sml glyphicon glyphicon-ban-circle' ng-click='vm.toggleUpdate(false)'></button>
         </td>
 
-        <td ng-show="action.id !== item._id" >
-          <button class='btn btn-danger glyphicon glyphicon-remove' ng-click='doubleCheckDelete(item._id)'></button>
+        <td ng-show="vm.del !== item._id" >
+          <button class='btn btn-danger glyphicon glyphicon-remove' ng-click='vm.confirmDelete(item._id)'></button>
         </td>
 
-        <td ng-show="action.id === item._id" >
-          <button class='confirm btn btn-danger btn-sml glyphicon glyphicon-remove' ng-click='deleteItem(item._id)'></button>
-          <button type='button' class='confirm btn btn-warning btn-sml glyphicon glyphicon-ban-circle' ng-click='doubleCheckDelete(false)'></button>
+        <td ng-show="vm.del === item._id" >
+          <button class='confirm btn btn-danger btn-sml glyphicon glyphicon-remove' ng-click='vm.deleteItem(item._id)'></button>
+          <button type='button' class='confirm btn btn-warning btn-sml glyphicon glyphicon-ban-circle' ng-click='vm.confirmDelete(false)'></button>
         </td>
 
       </tr>
